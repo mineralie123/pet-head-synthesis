@@ -23,3 +23,11 @@ A class-conditional U-Net diffusion model was trained from scratch on the select
 | Estimated memorization rate | 0.25% |
 
 The evaluation used 1,000 generated images per class. Increasing guidance from 2 to 3 at the same checkpoint raised class accuracy to 97.2%, while distribution recall fell to 0.508. Guidance 2 retained more visual variety at comparable FID. The 13.56-million-parameter model generated 1,000 images in about 117 seconds on an RTX 4060 Laptop GPU.
+
+## Algorithm source
+
+- [Conditional diffusion model](model.py): conditional U-Net, cosine noise schedule, noise-prediction loss, classifier-free guidance and DDIM sampling.
+- [Crop rules](pipeline_rules_v2.py): region comparison, square planning, geometry checks and review decisions.
+- [Geometry tests](test_pipeline_v2.py): synthetic examples for the crop rules. Run `python -m unittest test_pipeline_v2` from the repository root. The model module requires PyTorch.
+
+The metrics above refer to the original trained model. This source release contains algorithm implementations and synthetic tests only.
